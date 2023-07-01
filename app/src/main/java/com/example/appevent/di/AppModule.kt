@@ -1,5 +1,6 @@
 package com.example.AppEvent.di
 
+import com.example.AppEvent.data.remote.AsientoApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.example.AppEvent.data.remote.EventoApi
@@ -27,10 +28,19 @@ object AppModule {
     @Provides
     fun providesEventoApi(moshi: Moshi): EventoApi {
         return Retrofit.Builder()
-            .baseUrl("https://eventoapiweb.azurewebsites.net/")
+            .baseUrl("https://apieventapp.azurewebsites.net/")
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
             .create(EventoApi::class.java)
+    }
+    @Singleton
+    @Provides
+    fun providesAsientoApi(moshi: Moshi): AsientoApi {
+        return Retrofit.Builder()
+            .baseUrl("https://apieventapp.azurewebsites.net/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(AsientoApi::class.java)
     }
 
 }

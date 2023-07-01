@@ -1,5 +1,7 @@
 package com.example.AppEvent
 
+import AsientoListScreen
+import EventoListScreen
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -13,7 +15,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.AppEvent.util.Screen
-import com.example.AppEvent.ui.EventoList.EventoListScreen
 import com.example.AppEvent.ui.Evento.EventoScreen
 import com.example.AppEvent.ui.theme.AppEventTheme
 
@@ -38,16 +39,18 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(Screen.HomeScreen.route) {
                             MainScreen(
-                                onClick = { navController.navigate(Screen.EventoScreen.route) },
-                                onClick1 = { navController.navigate(Screen.EventoListScreen.route) },
+                                onClick1 = { navController.navigate(Screen.AsientoListScreen.route) },
+                                onClick2 = { navController.navigate(Screen.EventoListScreen.route) },
                             )
                         }
-                        composable(Screen.EventoScreen.route) {
-                            EventoScreen({ navController.navigateUp() })
+                        composable(Screen.AsientoListScreen.route) {
+                            AsientoListScreen(
+                                onClick = { navController.navigate(Screen.HomeScreen.route) }
+                            )
                         }
                         composable(Screen.EventoListScreen.route) {
                             EventoListScreen(
-                                onClick = { navController.navigate(Screen.EventoScreen.route) }
+                                onClick = { navController.navigate(Screen.HomeScreen.route) }
                             )
                         }
 

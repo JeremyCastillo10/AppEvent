@@ -4,16 +4,18 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 @Composable
-fun MainScreen(onClick: () -> Unit,
+fun MainScreen(
                onClick1: () -> Unit,
+               onClick2: () -> Unit
 )
 {
     Column() {
-        Button(onClick = onClick) {
-            Text(text = "RegistroEventos")
+
+        Button(onClick = onClick1) {
+            Text(text = "Lista Asientos")
 
         }
-        Button(onClick = onClick1) {
+        Button(onClick = onClick2) {
             Text(text = "Lista Eventos")
 
         }
